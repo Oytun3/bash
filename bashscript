@@ -1,0 +1,79 @@
+function Addition($a, $b) {
+    $a + $b
+}
+
+function Subtraction($a, $b) {
+    $a - $b
+}
+
+function Multiplication($a, $b) {
+    $a * $b
+}
+
+function Division($a, $b) {
+    if ($b -ne 0) {
+        $a / $b
+    } else {
+        "Error: Division by zero"
+    }
+}
+
+function Modulo($a, $b) {
+    $a % $b
+}
+
+function Factorial($n) {
+    if ($n -lt 0) {
+        "Error: Factorial of a negative number is not defined"
+    } else {
+        $fact = 1
+        for ($i = 1; $i -le $n; $i++) {
+            $fact *= $i
+        }
+        $fact
+    }
+}
+
+Write-Host "Select an operation:"
+Write-Host "+ (addition)"
+Write-Host "- (subtraction)"
+Write-Host "* (multiplication)"
+Write-Host "/ (division)"
+Write-Host "% (modulo)"
+Write-Host "! (factorial)"
+$operand = Read-Host "Enter your choice"
+
+switch ($operand) {
+    "+" {
+        $num1 = [int] (Read-Host "Enter the first number")
+        $num2 = [int] (Read-Host "Enter the second number")
+        Write-Host "Result: $(Addition -a $num1 -b $num2)"
+    }
+    "-" {
+        $num1 = [int] (Read-Host "Enter the first number")
+        $num2 = [int] (Read-Host "Enter the second number")
+        Write-Host "Result: $(Subtraction -a $num1 -b $num2)"
+    }
+    "*" {
+        $num1 = [int] (Read-Host "Enter the first number")
+        $num2 = [int] (Read-Host "Enter the second number")
+        Write-Host "Result: $(Multiplication -a $num1 -b $num2)"
+    }
+    "/" {
+        $num1 = [int] (Read-Host "Enter the first number")
+        $num2 = [int] (Read-Host "Enter the second number")
+        Write-Host "Result: $(Division -a $num1 -b $num2)"
+    }
+    "%" {
+        $num1 = [int] (Read-Host "Enter the first number")
+        $num2 = [int] (Read-Host "Enter the second number")
+        Write-Host "Result: $(Modulo -a $num1 -b $num2)"
+    }
+    "!" {
+        $num = [int] (Read-Host "Enter the number")
+        Write-Host "Result: $(Factorial -n $num)"
+    }
+    default {
+        Write-Host "Invalid operation selected"
+    }
+}
